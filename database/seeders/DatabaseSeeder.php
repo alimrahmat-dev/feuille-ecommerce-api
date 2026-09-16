@@ -20,10 +20,6 @@ class DatabaseSeeder extends Seeder
 
         
 
-        User::factory()->create([
-            'name' => 'admin' ,
-            'email' => 'admin123@gmail.com',
-            'password' => Hash::make('admin123456')
-        ]);
+        User::factory()->count(20)->create();
     }
 }

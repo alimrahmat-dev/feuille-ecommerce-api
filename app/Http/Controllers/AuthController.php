@@ -18,17 +18,21 @@ class AuthController extends Controller
 
         $user = User::where('email', $validations['email'])->first();
 
+
         if (!$user || !Hash::check($validations['password'], $user->password)) {
 
+       
             return response()->json([
                 'message' => 'password dan email tidak sesuai'
             ], 401);
         }
+
 
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
             'message' => 'Login Berhasil',
             'auth_token' => $token
         ]);
+
     }
 }
